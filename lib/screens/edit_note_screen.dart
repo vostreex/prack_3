@@ -53,7 +53,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                if (_controller.text.isNotEmpty) {
+                final text = _controller.text.trim();
+                if (text.isNotEmpty) {
                   widget.onNoteUpdated(widget.index, _controller.text);
                   Navigator.pop(context);
                 } else {
