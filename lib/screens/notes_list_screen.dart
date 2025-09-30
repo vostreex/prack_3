@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prack_3/main.dart';
+import 'edit_note_screen.dart';
 
 class NotesListScreen extends StatefulWidget {
   const NotesListScreen({super.key});
@@ -9,6 +10,13 @@ class NotesListScreen extends StatefulWidget {
 }
 
 class _NotesListScreenState extends State<NotesListScreen> {
+
+  void _updateNote(int index, String newText) {
+    setState(() {
+      notes[index] = newText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -26,6 +34,18 @@ class _NotesListScreenState extends State<NotesListScreen> {
               Expanded(
                 child: ListTile(
                   title: Text(notes[index]),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditNoteScreen(
+                          index: index,
+                          note: notes[index],
+                          onNoteUpdated: _updateNote,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               IconButton(
