@@ -20,13 +20,15 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           TextField(
             controller: _controller,
             decoration: const InputDecoration(labelText: 'Введите заметку'),
+            maxLines: null,
           ),
         SizedBox(height: 10,width: 10,),
           ElevatedButton(
             onPressed: () {
-              if (_controller.text.isNotEmpty) {
+              final text = _controller.text.trim();
+              if (text.isNotEmpty) {
                 setState(() {
-                  notes.add(_controller.text);
+                  notes.add(text);
                   _controller.clear();
                 });
               }
