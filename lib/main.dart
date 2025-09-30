@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/notes_list_screen.dart';
 import 'screens/add_note_screen.dart';
+import 'screens/search_notes_screen.dart';
 
-List<String> notes = ["fsffs fsefe\n fsfsfs \n feff","fefwfefwf"];
+List<String> notes = [];
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeScreen(),
     NotesListScreen(),
     AddNoteScreen(),
+    SearchNotesScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,7 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Notes'),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add')
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
